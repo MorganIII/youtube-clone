@@ -4,7 +4,6 @@ package com.morgan.youtubeclone.controller;
 import com.morgan.youtubeclone.dto.CommentDTO;
 import com.morgan.youtubeclone.dto.UploadVideoResponse;
 import com.morgan.youtubeclone.dto.VideoDTO;
-import com.morgan.youtubeclone.model.Comment;
 import com.morgan.youtubeclone.service.VideoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -45,13 +44,13 @@ public class VideoController {
         return videoService.getVideoDetails(videoId);
     }
 
-    @GetMapping("/like/{videoId}")
+    @PostMapping("/like/{videoId}")
     @ResponseStatus(HttpStatus.OK)
     public VideoDTO likeVideo(@PathVariable String videoId) {
         return videoService.likeVideo(videoId);
     }
 
-    @GetMapping("/dislike/{videoId}")
+    @PostMapping("/dislike/{videoId}")
     @ResponseStatus(HttpStatus.OK)
     public VideoDTO dislikeVideo(@PathVariable String videoId) {
         return videoService.dislikeVideo(videoId);
@@ -70,6 +69,8 @@ public class VideoController {
         return videoService.getAllComments(videoId);
     }
 
+    @GetMapping("")
+    @ResponseStatus(HttpStatus.OK)
     public List<VideoDTO> getAllVideos() {
         return videoService.getAllVideos();
     }

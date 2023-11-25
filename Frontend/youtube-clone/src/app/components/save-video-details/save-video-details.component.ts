@@ -101,7 +101,10 @@ export class SaveVideoDetailsComponent {
       "tags": this.tags,
       "videoUrl": this.videoUrl,
       "videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
-      "thumbnailUrl": this.thumbnailUrl
+      "thumbnailUrl": this.thumbnailUrl,
+      "likeCount": 0,
+      "dislikeCount": 0,
+      "viewCount": 0
     }
     this.videoService.saveVideo(videoMetaData).subscribe(data => {
       this._snackBar.open('Video details saved successfully', 'Ok');

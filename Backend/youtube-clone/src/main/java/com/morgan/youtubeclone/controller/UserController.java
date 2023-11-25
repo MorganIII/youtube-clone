@@ -1,6 +1,5 @@
 package com.morgan.youtubeclone.controller;
 
-import com.morgan.youtubeclone.dto.CommentDTO;
 import com.morgan.youtubeclone.service.UserRegistrationService;
 import com.morgan.youtubeclone.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +23,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public String register(Authentication authentication) {
         Jwt jwt = (Jwt) authentication.getPrincipal();
-        userRegistrationService.registerUser(jwt.getTokenValue());
-        return "User Registration is Successful";
+        return userRegistrationService.registerUser(jwt.getTokenValue());
     }
 
     @PostMapping("/subscribe/{userId}")

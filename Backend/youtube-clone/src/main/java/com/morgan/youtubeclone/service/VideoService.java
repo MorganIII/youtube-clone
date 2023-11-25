@@ -93,7 +93,7 @@ public class VideoService {
         if(userService.ifLikedVideo(videoId)) {
             savedVideo.decrementLikes();
             userService.removeFromLikedVideos(videoId);
-            savedVideo.incrementLikes();
+            savedVideo.incrementDisLikes();
             userService.addToDisLikedVideos(videoId);
         } else if (userService.ifDisLikedVideo(videoId)) {
             savedVideo.decrementDisLikes();

@@ -29,9 +29,22 @@ export class VideoService {
     console.log("from service: "+videoId);
     return this.http.get<VideoDto>(`${this.baseUrl}/watch-video`,{params:{"videoId":videoId}});
   }
-
+  
   saveVideo(videoDTO: VideoDto) : Observable<VideoDto> {
-
+    
     return this.http.put<VideoDto>(`${this.baseUrl}/edit-video`, videoDTO);
   }
+  
+  getAllVideos(): Observable<Array<VideoDto>> {
+    return this.http.get<Array<VideoDto>>(`${this.baseUrl}`);
+  }
+
+  likeVideo(videoId: string) : Observable<VideoDto>  {
+    return this.http.post<VideoDto>(`${this.baseUrl}/like/${videoId}`, null);
+  }
+
+  dislikeVideo(videoId: string) : Observable<VideoDto>  {
+    return this.http.post<VideoDto>(`${this.baseUrl}/dislike/${videoId}`, null);
+  }
 }
+
